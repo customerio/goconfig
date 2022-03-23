@@ -483,7 +483,7 @@ func (c *ConfigFile) GetString(section string, option string) (string, error) {
 			errors.New(
 				fmt.Sprintf(
 					"Possible cycle while unfolding variables: max depth of %d reached",
-					strconv.Itoa(DepthValues),
+					DepthValues,
 				),
 			)
 	}
