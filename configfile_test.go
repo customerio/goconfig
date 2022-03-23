@@ -1,11 +1,12 @@
 package goconfig_test
 
 import (
-	. "../goconfig"
 	"bufio"
 	"os"
 	"strings"
 	"testing"
+
+	. "github.com/customerio/goconfig"
 )
 
 func testGet(t *testing.T, c *ConfigFile, section string, option string, expected interface{}) {
