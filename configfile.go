@@ -17,27 +17,27 @@
 //
 // To read this configuration file, do:
 //
-//	c, err := configfile.ReadConfigFile("config.cfg");
+//		c, err := configfile.ReadConfigFile("config.cfg");
 //
-//  // result is string :http://www.example.com/some/path"
-//	c.GetString("service-1", "url");
+//	 // result is string :http://www.example.com/some/path"
+//		c.GetString("service-1", "url");
 //
-//	c.GetInt64("service-1", "maxclients"); // result is int 200
-//	c.GetBool("service-1", "delegation"); // result is bool true
+//		c.GetInt64("service-1", "maxclients"); // result is int 200
+//		c.GetBool("service-1", "delegation"); // result is bool true
 //
-//  // result is string "This is a multi-line\nentry"
-//	c.GetString("service-1", "comments");
+//	 // result is string "This is a multi-line\nentry"
+//		c.GetString("service-1", "comments");
 //
 // Note the support for unfolding variables (such as %(base-url)s), which are
 // read from the special (reserved) section name [default].
 //
 // A new configuration file can also be created with:
 //
-//	c := configfile.NewConfigFile();
-//	c.AddSection("section");
-//	c.AddOption("section", "option", "value");
-//  // use 0644 as file permission
-//	c.WriteConfigFile("config.cfg", 0644, "A header for this file");
+//		c := configfile.NewConfigFile();
+//		c.AddSection("section");
+//		c.AddOption("section", "option", "value");
+//	 // use 0644 as file permission
+//		c.WriteConfigFile("config.cfg", 0644, "A header for this file");
 //
 // This results in the file:
 //
@@ -204,7 +204,7 @@ func firstIndex(s string, delim []byte) int {
 	return -1
 }
 
-func (c *ConfigFile) read(buf *bufio.Reader) error {
+func (c *ConfigFile) Read(buf *bufio.Reader) error {
 
 	var section, option string
 
@@ -276,7 +276,7 @@ func ReadConfigFile(fname string) (*ConfigFile, error) {
 	}
 
 	c := NewConfigFile()
-	if err := c.read(bufio.NewReader(file)); err != nil {
+	if err := c.Read(bufio.NewReader(file)); err != nil {
 		return nil, err
 	}
 
